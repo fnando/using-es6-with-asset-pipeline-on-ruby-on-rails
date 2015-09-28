@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 function runner() {
   // All scripts must live in app/assets/javascripts/application/pages/**/*.es6.
-  var path = 'application/pages/' + $('body').data('route');
+  var path = $('body').data('route');
 
   // Load script for this page.
   // We should use System.import, but it's not worth the trouble, so
