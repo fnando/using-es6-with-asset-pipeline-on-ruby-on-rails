@@ -1,8 +1,8 @@
-import $ from 'jquery';
+import $ from "jquery";
 
 function runner() {
   // All scripts must live in app/assets/javascripts/application/pages/**/*.es6.
-  var path = $('body').data('route');
+  var path = $("body").data("route");
 
   // Load script for this page.
   // We should use System.import, but it's not worth the trouble, so
@@ -14,7 +14,10 @@ function runner() {
   }
 }
 
-function onload(Page) {
+function onload(mod) {
+  // Assign the default module.
+  var Page = mod.default;
+
   // Instantiate the page, passing <body> as the root element.
   var page = new Page($(document.body));
 
@@ -29,7 +32,7 @@ function onload(Page) {
 // Handles exception.
 function handleError(error) {
   if (error.message.match(/undefined missing/)) {
-    console.warn('missing module:', error.message.split(' ').pop());
+    console.warn("missing module:", error.message.split(' ').pop());
   } else {
     throw error;
   }
@@ -37,4 +40,4 @@ function handleError(error) {
 
 $(window)
   .ready(runner)
-  .on('page:load', runner);
+  .on("turbolinks:load", runner);
