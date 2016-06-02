@@ -1,3 +1,4 @@
+//= require babel
 //= require turbolinks
 //= require almond
 //= require jquery
